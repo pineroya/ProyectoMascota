@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mascotas</title>
+</head>
+<body>
+    <ul>
+
+        {% for dog in perro %}
+            <li>Nombre del Perro: {{dog.nombre}}</li>
+            <li>Edad del Perro: {{dog.edad}}</li>
+            <li>Duenio del Perro: {{dog.duenio}}</li>
+            <li>Raza del Perro: {{dog.raza}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+
+    
+     <ul>
+        <li>Nombre del Gato: {{gato.nombre}}</li>
+        {% for cat in gato %}
+            <li>Nombre del Gato: {{cat.nombre}}</li>
+            <li>Edad del Gato: {{cat.edad}}</li>
+            <li>Duenio del Gato: {{cat.duenio}}</li>
+            <li>Raza del Gato: {{cat.raza}}</li>
+            <br>
+        {% endfor %}
+    </ul> 
+
+    <ul>
+        <li>Nombre del Conejo: {{conejo.nombre}}</li>
+        {% for bunny in conejo %}
+            <li>Nombre del Conejo: {{bunny.nombre}}</li>
+            <li>Edad del Conejo: {{bunny.edad}}</li>
+            <li>Duenio del Conejo: {{bunny.duenio}}</li>
+            <li>Raza del Conejo: {{bunny.raza}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
