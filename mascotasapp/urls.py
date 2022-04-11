@@ -3,12 +3,10 @@
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))"""
 
 from django.urls import include, path
-from .views import listado_perros, listado_conejos, listado_gatos
+from .views import *
 from . import views
 
 urlpatterns = [
     #path('lista/', listado_perros),
-    path('', views.listado_perros, name="ListaP"),
-    path('', views.listado_gatos, name="ListaG"),
-    path('', views.listado_conejos, name="ListaC"),
+    path('', views.listado_animales, name="ListaP"),
 ]

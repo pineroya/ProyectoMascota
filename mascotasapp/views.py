@@ -16,19 +16,10 @@ from django.http import HttpResponse
     }
     return HttpResponse(template.render(context, request))"""
 
-def listado_perros(request):
+def listado_animales(request):
 
     perros=Perros.objects.all()
-    return render(request, "listado_mascotas.html", {"perro":perros})
-
-def listado_gatos(request):
-
     gatos=Gatos.objects.all()
-    print(gatos)
-    return render(request, "listado_mascotas.html", {"gato":gatos})
-
-def listado_conejos(request):
     conejos=Conejos.objects.all()
-    print(conejos)
-    return render(request, "listado_mascotas.html", {"conejo":conejos})
+    return render(request, "listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
 
