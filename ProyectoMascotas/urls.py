@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from mascotasapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mascotasapp/', include('mascotasapp.urls')),
+    path('busqueda_mascota/', views.busqueda_mascota),
+    path('buscar/', views.buscar),
 ]

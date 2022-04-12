@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %} Resultado busqueda {% endblock %}
+
+{% block content %}
+
+<body>
+
+    <p>
+
+        Estás buscando: <strong>{{query}}</strong>
+
+    </p>
+
+    {% if petperro %}
+        <p>Mascota encontrada: {{petperro|length}}petperro</p>
+        <ul>
+            {% for pet in petperro %}
+                <li>
+                    {{pet.nombre}}
+                </li>
+                <li>
+                    {{pet.edad}}
+                </li>
+                <li>
+                    {{pet.duenio}}
+                </li>
+                <li>
+                    {{pet.color}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encuentra la mascota</p>
+    {% endif %}
+
+</body>
+
+{% endblock %}

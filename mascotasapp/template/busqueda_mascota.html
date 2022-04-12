@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+
+{% block title %} Busqueda mascota {% endblock %}
+    
+{% block content %}
+
+<form action="/buscar/" method="GET">
+
+    <input type="text" name="bmascota">
+    <input type="submit" value="buscar">
+
+</form>
+
+{% endblock %}

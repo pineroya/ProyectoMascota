@@ -23,3 +23,21 @@ def listado_animales(request):
     conejos=Conejos.objects.all()
     return render(request, "listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
 
+def busqueda_mascota(request):
+
+    return render(request, "busqueda_mascota.html")
+
+def buscar(request):
+
+    if request.GET["bmascota"]:
+
+        #mensaje="Mascota buscada: %r" %request.GET["bmascota"]
+        busquedapet=request.GET["bmascota"]
+        petperro=Perros.objects.filter(nombre__icontains=busquedapet)
+        return render(request, "resultado_busqueda.html", {"petperro": petperro, "query": busquedapet})
+
+    else:
+
+        mensaje="Dato ingresado incorrecto"
+
+    return HttpResponse(mensaje)
