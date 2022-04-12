@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Formulario {% endblock %}
+
+{% block content %}
+<body>
+    <h3>
+        Registra tu mascota a continuación:
+    </h3>
+
+    {% if miformulario.errors %}
+    <p style="color:red">Datos incorrectos, revisar</p>
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{ miformulario.as_table }}
+        </table>
+        <input type="submit", value="Enviar">
+    </form>
+</body>
+{% endblock %}

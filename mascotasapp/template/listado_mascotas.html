@@ -1,36 +1,40 @@
 {% extends "base.html" %}
 
-{% block title %} Agregar Mascota {% endblock %}
+{% block title %} Lista completa {% endblock %}
 
 {% block content %}
+
+<h3>
+    Lista completa de mascotas
+</h3>
 
 <ul>
 
     {% for dog in perro %}
-        <li>Nombre del Perro: {{dog.nombre}}</li>
-        <li>Edad del Perro: {{dog.edad}}</li>
-        <li>Duenio del Perro: {{dog.duenio}}</li>
-        <li>Color del Perro: {{dog.color}}</li>
+        <li style="color:brown">Nombre del Perro: {{dog.nombre}}</li>
+        <li>Edad: {{dog.edad}} año/s</li>
+        <li>Dueño: {{dog.duenio}}</li>
+        <li>Color: {{dog.color}}</li>
         <br>
     {% endfor %}
 </ul>
 
  <ul>
     {% for cat in gato %}
-        <li>Nombre del Gato: {{cat.nombre}}</li>
-        <li>Edad del Gato: {{cat.edad}}</li>
-        <li>Duenio del Gato: {{cat.duenio}}</li>
-        <li>Color del Gato: {{cat.color}}</li>
+        <li style="color: orangered">Nombre del Gato: {{cat.nombre}}</li>
+        <li>Edad: {{cat.edad}} año/s</li>
+        <li>Dueño: {{cat.duenio}}</li>
+        <li>Color: {{cat.color}}</li>
         <br>
     {% endfor %}
 </ul> 
 
 <ul>
     {% for bunny in conejo %}
-        <li>Nombre del Conejo: {{bunny.nombre}}</li>
-        <li>Edad del Conejo: {{bunny.edad}}</li>
-        <li>Duenio del Conejo: {{bunny.duenio}}</li>
-        <li>Color del Conejo: {{bunny.color}}</li>
+        <li style="color:purple">Nombre del Conejo: {{bunny.nombre}}</li>
+        <li>Edad: {{bunny.edad}} año/s</li>
+        <li>Dueño: {{bunny.duenio}}</li>
+        <li>Color: {{bunny.color}}</li>
         <br>
     {% endfor %}
 </ul>

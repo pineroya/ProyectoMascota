@@ -11,25 +11,64 @@
         Estás buscando: <strong>{{query}}</strong>
 
     </p>
-
-    {% if petperro %}
-        <p>Mascota encontrada: {{petperro|length}}petperro</p>
+    
+    {% if petconejo %}
+        <p>Mascota encontrada: {{petconejo|length}} conejo</p>
         <ul>
-            {% for pet in petperro %}
+            {% for pet in petconejo %}
                 <li>
-                    {{pet.nombre}}
+                    Nombre: {{pet.nombre}}
                 </li>
                 <li>
-                    {{pet.edad}}
+                    Edad: {{pet.edad}} año/s
                 </li>
                 <li>
-                    {{pet.duenio}}
+                    Dueño: {{pet.duenio}}
                 </li>
                 <li>
-                    {{pet.color}}
+                    Color: {{pet.color}}
                 </li>
             {% endfor %}
         </ul>
+
+    {% elif petperro %}
+        <p>Mascota encontrada: {{petperro|length}} perro</p>
+        <ul>
+            {% for pet in petperro %}
+                <li>
+                    Nombre: {{pet.nombre}}
+                </li>
+                <li>
+                    Edad: {{pet.edad}} año/s
+                </li>
+                <li>
+                    Dueño: {{pet.duenio}}
+                </li>
+                <li>
+                    Color: {{pet.color}}
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% elif petgato %}
+        <p>Mascota encontrada: {{petgato|length}} gato</p>
+        <ul>
+            {% for pet in petgato %}
+                <li>
+                    Nombre: {{pet.nombre}}
+                </li>
+                <li>
+                    Edad: {{pet.edad}} año/s
+                </li>
+                <li>
+                    Dueño: {{pet.duenio}}
+                </li>
+                <li>
+                    Color: {{pet.color}}
+                </li>
+            {% endfor %}
+        </ul>
+
     {% else %}
         <p>No se encuentra la mascota</p>
     {% endif %}

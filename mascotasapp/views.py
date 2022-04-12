@@ -2,19 +2,9 @@ from django.shortcuts import render
 from .models import Perros, Gatos, Conejos
 from django.template import loader
 from django.http import HttpResponse
+from mascotasapp.forms import Formularioform
 
 # Create your views here.
-
-
-"""def listado_perros(request):
-    template = loader.get_template('listado_mascotas.html')
-
-    perros=Perros.objects.all()
-    print(perros)
-    context = {
-        'perros': perros,
-    }
-    return HttpResponse(template.render(context, request))"""
 
 def listado_animales(request):
 
@@ -32,12 +22,33 @@ def buscar(request):
     if request.GET["bmascota"]:
 
         #mensaje="Mascota buscada: %r" %request.GET["bmascota"]
-        busquedapet=request.GET["bmascota"]
-        petperro=Perros.objects.filter(nombre__icontains=busquedapet)
-        return render(request, "resultado_busqueda.html", {"petperro": petperro, "query": busquedapet})
+        busquedapet = request.GET["bmascota"]
+        petperro = Perros.objects.filter(nombre__icontains=busquedapet)
+        petgato = Gatos.objects.filter(nombre__icontains=busquedapet)
+        petconejo = Conejos.objects.filter(nombre__icontains=busquedapet)
+        return render(request, "resultado_busqueda.html", {"petperro": petperro, "query": busquedapet, "petgato": petgato, "query": busquedapet, "petconejo": petconejo, "query": busquedapet})
 
     else:
 
         mensaje="Dato ingresado incorrecto"
 
     return HttpResponse(mensaje)
+
+def formulario(request):
+
+    if request.method=="POST":
+
+        miformulario = Formularioform(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid():
+
+            informacion = miformulario.cleaned_data
+            perrof = Perros(nombre=informacion['nombre'], edad=informacion['edad'], duenio=informacion['duenio'], color=informacion['color'])
+            perrof.save()
+            return render(request, "listado_mascotas.html")
+    
+    else:
+        miformulario = Formularioform()
+
+    return render(request, "formulario.html", {"miformulario": miformulario})

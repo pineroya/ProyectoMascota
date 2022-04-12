@@ -19,7 +19,8 @@ from mascotasapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mascotasapp/', include('mascotasapp.urls')),
-    path('busqueda_mascota/', views.busqueda_mascota),
+    path('lista/', include('mascotasapp.urls')),
+    path('busqueda/', views.busqueda_mascota),
     path('buscar/', views.buscar),
+    path('formulario/', views.formulario),
 ]
