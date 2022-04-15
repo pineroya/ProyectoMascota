@@ -8,3 +8,6 @@ la plantilla base.html contiene un cuerpo base que contiene el titulo de la web 
 Para agregar mascota con nombre, edad, dueño y color ingresar a la ruta formulario/
 Para buscar una mascota ya agregada ingresar a la ruta busqueda/
 Para ver el listado completo de los datos cargados de todas las clases de models ingresar a lista/
+
+Como base de datos utilizamos PostgreSQL 13
+tambien instalamos psycopg2 para conectarnos
