@@ -11,11 +11,11 @@ def listado_animales(request):
     perros=Perros.objects.all()
     gatos=Gatos.objects.all()
     conejos=Conejos.objects.all()
-    return render(request, "listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
+    return render(request, "mascotas/listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
 
 def busqueda_mascota(request):
 
-    return render(request, "busqueda_mascota.html")
+    return render(request, "mascotas/busqueda_mascota.html")
 
 def buscar(request):
 
@@ -26,7 +26,7 @@ def buscar(request):
         petperro = Perros.objects.filter(nombre__icontains=busquedapet)
         petgato = Gatos.objects.filter(nombre__icontains=busquedapet)
         petconejo = Conejos.objects.filter(nombre__icontains=busquedapet)
-        return render(request, "resultado_busqueda.html", {"petperro": petperro, "query": busquedapet, "petgato": petgato, "query": busquedapet, "petconejo": petconejo, "query": busquedapet})
+        return render(request, "mascotas/resultado_busqueda.html", {"petperro": petperro, "query": busquedapet, "petgato": petgato, "query": busquedapet, "petconejo": petconejo, "query": busquedapet})
 
     else:
 
@@ -46,9 +46,9 @@ def formulario(request):
             informacion = miformulario.cleaned_data
             perrof = Perros(nombre=informacion['nombre'], edad=informacion['edad'], duenio=informacion['duenio'], color=informacion['color'])
             perrof.save()
-            return render(request, "listado_mascotas.html")
+            return render(request, "mascotas/listado_mascotas.html")
     
     else:
         miformulario = Formularioform()
 
-    return render(request, "formulario.html", {"miformulario": miformulario})
+    return render(request, "mascotas/formulario.html", {"miformulario": miformulario})
