@@ -1,6 +1,8 @@
 {% load static %}
 <html>
 <head>
+    {% block title %}
+    {% endblock %}
     <!-- Bootstrap -->
     <link href="{% static 'Appvisual/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -61,30 +63,13 @@
     <!-- Footer -->
     <footer class="footer text-faded text-center py-5">
       <div class="container">
-        <p class="m-0">
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	        <a href="#" class="link">
-	          <span class="fa-stack fa-lg">
-	            <i class="fa fa-circle fa-stack-2x"></i>
-	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-	          </span>
-	        </a>
-	    </p>
+        <p>
+        <a href='/aboutus' class="link">About us</a>
+        </p>
         <p>Gracias por tu visita</p>
         <p class="m-0 mbt1">&copy; Nuestras mascotas 2022</p>
       </div>
-	</footer>
+	  </footer>
 
     <!-- Bootstrap -->
     <script src="{% static 'Appvisual/vendor/jquery/jquery.min.js' %}"></script>

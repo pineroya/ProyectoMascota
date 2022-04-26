@@ -1,42 +1,52 @@
 {% extends "base.html" %}
+{% block title %}<title>Lista</title>{% endblock %}
 
-{% block title %} Lista completa {% endblock %}
+<style>
+    .city {
+      background-color: tomato;
+      color: white;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+    }
+</style>
 
 {% block content %}
 
-<h3>
+<h3 style="color: whitesmoke">
     Lista completa de mascotas
 </h3>
+<div class="cta-inner">
+    <ul>
 
-<ul>
-
-    {% for dog in perro %}
-        <li style="color:brown">Nombre del Perro: {{dog.nombre}}</li>
-        <li>Edad: {{dog.edad}} año/s</li>
-        <li>Dueño: {{dog.duenio}}</li>
-        <li>Color: {{dog.color}}</li>
-        <br>
-    {% endfor %}
-</ul>
-
- <ul>
-    {% for cat in gato %}
-        <li style="color: orangered">Nombre del Gato: {{cat.nombre}}</li>
-        <li>Edad: {{cat.edad}} año/s</li>
-        <li>Dueño: {{cat.duenio}}</li>
-        <li>Color: {{cat.color}}</li>
-        <br>
-    {% endfor %}
-</ul> 
-
-<ul>
-    {% for bunny in conejo %}
-        <li style="color:purple">Nombre del Conejo: {{bunny.nombre}}</li>
-        <li>Edad: {{bunny.edad}} año/s</li>
-        <li>Dueño: {{bunny.duenio}}</li>
-        <li>Color: {{bunny.color}}</li>
-        <br>
-    {% endfor %}
-</ul>
+        {% for dog in perro %}
+            <p style="color:brown">Nombre del Perro: {{dog.nombre}}</p>
+            <li>Edad: {{dog.edad}} año/s</li>
+            <li>Dueño: {{dog.duenio}}</li>
+            <li>Color: {{dog.color}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+    
+     <ul>
+        {% for cat in gato %}
+            <p style="color: orangered">Nombre del Gato: {{cat.nombre}}</p>
+            <li>Edad: {{cat.edad}} año/s</li>
+            <li>Dueño: {{cat.duenio}}</li>
+            <li>Color: {{cat.color}}</li>
+            <br>
+        {% endfor %}
+    </ul> 
+    
+    <ul>
+        {% for bunny in conejo %}
+            <p style="color:purple">Nombre del Conejo: {{bunny.nombre}}</p>
+            <li>Edad: {{bunny.edad}} año/s</li>
+            <li>Dueño: {{bunny.duenio}}</li>
+            <li>Color: {{bunny.color}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}

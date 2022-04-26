@@ -1,20 +1,22 @@
 {% extends "base.html" %}
+{% block title %}<title>Blog</title>{% endblock %}
 
 {% load static %}
 
 {% block content %}
-
     {% for post in posts %}
 
     <section class="page-section clearfix">
         <div class="container">
           <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen}}" alt="" style="width: 50%;">
             <div class="intro-text left-0 text-center bg-faded p-5 rounded">
               <h2 class="section-heading mb-4" >
-                <span class="section-heading-lower" style="color: rgb(11, 188, 241)">{{post.titulo}}</span>
+                <span class="section-heading-lower" style="color: rgb(191, 241, 11)">{{post.titulo}}</span>
+                <span class="section-heading-lower" style="color: rgb(11, 241, 42)">{{post.subtitulo}}</span>
                 <span class="section-heading-upper">{{post.contenido}}</span>
               </h2>
-              <div style="text-align: left; color: blue; font-size: 0.8em;">
+              <div style="text-align: left; color: whitesmoke; font-size: 0.8em;">
                 Autor: {{post.autor}}
               </div>
             </div>
@@ -24,7 +26,7 @@
 
     {% endfor %} 
 <section>
-    <div style="width: 75%; margin: auto; text-align: center; color:white;">
+    <div style="width: 25%; margin: auto; text-align: left; color:white;">
     </div>
 </section>
 {% endblock %}

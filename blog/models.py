@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     titulo=models.CharField(max_length=50)
     subtitulo=models.CharField(max_length=50)
-    contenido=models.CharField(max_length=150)
-    imagen=models.ImageField(upload_to='blog', null=True, blank=True)
+    contenido=models.CharField(max_length=500)
+    imagen=models.ImageField(upload_to='blog/img', null=True, blank=True)
     autor=models.ForeignKey(User, on_delete=models.CASCADE)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now_add=True)

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Formulario {% endblock %}
+{% block title %} <title>Formulario</title> {% endblock %}
 
 {% block content %}
 <body>
@@ -11,11 +11,13 @@
     <p style="color:red">Datos incorrectos, revisar</p>
     {% endif %}
 
-    <form action="" method="POST">{% csrf_token %}
-        <table>
-            {{ miformulario.as_table }}
-        </table>
-        <input type="submit", value="Enviar">
-    </form>
+    <div class="container">
+        <form action="" method="POST">{% csrf_token %}
+            <table>
+                {{ miformulario.as_table }}
+            </table>
+            <input type="submit", value="Enviar">
+        </form>
+    </div>
 </body>
 {% endblock %}
