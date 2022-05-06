@@ -3,9 +3,15 @@ from .models import Perros, Gatos, Conejos
 from django.template import loader
 from django.http import HttpResponse
 from mascotasapp.forms import Formularioform
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
+def nuestras_mascotas(request):
+    return render(request, "mascotas/nuestras_mascotas.html")
+
+@login_required
 def listado_animales(request):
 
     perros=Perros.objects.all()
@@ -13,15 +19,16 @@ def listado_animales(request):
     conejos=Conejos.objects.all()
     return render(request, "mascotas/listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
 
+@login_required
 def busqueda_mascota(request):
 
     return render(request, "mascotas/busqueda_mascota.html")
 
-def buscar(request):
+@login_required
+def resultado_busqueda(request):
 
     if request.GET["bmascota"]:
 
-        #mensaje="Mascota buscada: %r" %request.GET["bmascota"]
         busquedapet = request.GET["bmascota"]
         petperro = Perros.objects.filter(nombre__icontains=busquedapet)
         petgato = Gatos.objects.filter(nombre__icontains=busquedapet)
@@ -34,6 +41,7 @@ def buscar(request):
 
     return HttpResponse(mensaje)
 
+@login_required
 def formulario(request):
 
     if request.method=="POST":

@@ -1,24 +1,28 @@
 {% extends "base.html" %}
-{% block title %} <title>Formulario</title> {% endblock %}
+{% block title %}<title>Editar</title>{% endblock %}
+
+{% load static %}
 
 {% block content %}
+
 <body>
     <h3 style="color: whitesmoke">
-        Registra tu mascota a continuación:
+        Registra tu blog a continuación:
     </h3>
 
-    {% if miformulario.errors %}
+    {% if formulariob.errors %}
     <p style="color:red">Datos incorrectos, revisar</p>
     {% endif %}
 
     <div class="container">
         <form action="" method="POST">{% csrf_token %}
             <table>
-                {{ miformulario.as_table }}
+                {{ formulariob.as_table }}
             </table>
             <input type="submit", value="Enviar">
         </form>
     </div>
 </body>
+
+<a href="formularioblog/">Agregar otro Post</a>
 {% endblock %}
-<!-- Al agregar mascota desde la web se agregan por defecto en perro-->

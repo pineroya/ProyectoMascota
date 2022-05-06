@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} <title>Nuestras mascotas</title> {% endblock %}
+
+{% block content %}
+<body>
+    <h3>
+        Registra tu mascota a continuación:
+    </h3>
+
+    <div class="container">
+        <li class="nav-item {% if request.path == '/formulario' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Formulario' %}">Registra tu mascota</a>
+          </li>
+          <li class="nav-item {% if request.path == '/buscar' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Busqueda' %}">Busqueda</a>
+          </li>
+          <li class="nav-item {% if request.path == '/lista' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Lista' %}">Lista de mascotas</a>
+          </li>
+    </div>
+</body>
+{% endblock %}

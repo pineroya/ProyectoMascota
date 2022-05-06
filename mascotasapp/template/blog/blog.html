@@ -9,7 +9,7 @@
     <section class="page-section clearfix">
         <div class="container">
           <div class="intro">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen}}" alt="" style="width: 50%;">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 50%;">
             <div class="intro-text left-0 text-center bg-faded p-5 rounded">
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower" style="color: rgb(191, 241, 11)">{{post.titulo}}</span>
@@ -17,16 +17,19 @@
                 <span class="section-heading-upper">{{post.contenido}}</span>
               </h2>
               <div style="text-align: left; color: whitesmoke; font-size: 0.8em;">
-                Autor: {{post.autor}}
+                <p>Autor: {{post.autor}}</p>
+                <p>Creado: {{post.created}}</p>
+                <button>
+                  <a href="{% url 'Delete_blog' post.titulo %}"> Eliminar</a>
+                  <a href="{% url 'Editar_blog' post.titulo %}"> Editar</a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+    
+    {% endfor %}
 
-    {% endfor %} 
-<section>
-    <div style="width: 25%; margin: auto; text-align: left; color:white;">
-    </div>
-</section>
+    <a href="formularioblog/">Agregar otro Post</a>
 {% endblock %}

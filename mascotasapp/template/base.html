@@ -1,5 +1,5 @@
 {% load static %}
-<html>
+<html enctype="multipart/form-data">
 <head>
     {% block title %}
     {% endblock %}
@@ -21,8 +21,16 @@
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       
         <span class="site-heading-lower">Bienvenidos a Mascotas en casa</span>
-      </h1>
+    </h1>
 
+    <ul class="sidebar-nav">
+     {% if user.is_authenticated %}
+       <li>User: {{ user.get_username }}</li>
+       <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+     {% else %}
+       <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+     {% endif %} 
+    </ul>
 
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
@@ -39,16 +47,9 @@
           <li class="nav-item {% if request.path == '/blog' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Blog' %}">Blog</a>
           </li>
-          <li class="nav-item {% if request.path == '/formulario' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Formulario' %}">Formulario</a>
+          <li class="nav-item {% if request.path == '/nuestras_mascotas' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Nuestras_mascotas' %}">Nuestras mascotas</a>
           </li>
-          <li class="nav-item {% if request.path == '/busqueda' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Busqueda' %}">Busqueda</a>
-          </li>
-          <li class="nav-item {% if request.path == '/lista' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Lista' %}">Lista</a>
-          </li>
-         
         </ul>
       </div>
     </div>
@@ -56,9 +57,9 @@
 
 <!-- contenido cambiante-->
 
-  {% block content %}
+{% block content %}
 
-  {% endblock %}
+{% endblock %}
 
     <!-- Footer -->
     <footer class="footer text-faded text-center py-5">
