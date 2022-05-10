@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}<title>About us</title>{% endblock %}
-
+{% load static %}
 {% block content %}
 <div class="container; text-faded text-center py-5">
     <p style= "font-family:courier,arial,helvética; color: rgb(136, 218, 243)">Somos Yamil y Paula, tenemos 31 y 29 años respectivamente. Somos pareja desde hace 4 años aproximadamente y vivimos en Córdoba, Argentina. Actualmente nos dedicamos a Soporte Técnico para un servicio de Internet y TV IP (Yamil) y Analista de Pagos en una empresa de Tecnología/Marketing (Paula). 
@@ -10,7 +10,7 @@
     <p style="font-family:courier,arial,helvética; color: rgb(136, 218, 243)">Siempre que tenemos oportunidad también ayudamos a animalitos que están en busca de comida en la calle. De hecho, de manera permanente, hay un gato callejero que viene a casa a comer y a pedir mimos. Lo hemos apodado “Bronco”.
 
         Esperamos sea de su agrado!
-        
-    </p> 
+    </p>
+    <img height="200px" src="{% static 'Appvisual/img/nosotros.jpeg' %}">
 </div>
 {% endblock %}

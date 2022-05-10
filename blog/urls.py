@@ -4,8 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('blog/', views.blog, name="Blog"),
-    path('blog/formularioblog/', views.formularioblog, name = 'Formulario_blog'),
+    path('', views.blog, name="Blog"),
+    path('formularioblog/', views.formularioblog, name = 'Formulario_blog'),
     path('deleteblog/<titulo_blog>/', views.deletepost, name = "Delete_blog"),
     path('editarblog/<titulo_blog>/', views.editarblog, name = "Editar_blog"),
 

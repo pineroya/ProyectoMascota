@@ -4,12 +4,13 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
-    <img height="80px" src="{{url}}">
-    <li>{{ user.get_username }}</li>
-    <li>{{ user.email }}</li>
-    <li>{{ user.first_name }}</li>
-    <li>{{ user.last_name }}</li>
-
+    <div class="linksCategorias">
+        <img height="80px" src="{{url}}">
+        <li>{{ user.get_username }}</li>
+        <li>{{ user.email }}</li>
+        <li>{{ user.first_name }}</li>
+        <li>{{ user.last_name }}</li>
+    </div>
 {% endif %}
 <p>
     <a href='/accounts/editar_perfil' class="link">Edita tu perfil</a>
