@@ -1,12 +1,19 @@
+import imp
 from django.shortcuts import HttpResponse, render
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.contrib.auth import login, logout, authenticate
-from mascotasapp.forms import UserRegisterForm, UserEditForm
+from mascotasapp.forms import UserRegisterForm, UserEditForm, FormularioContacto, AvatarFormulario
 from django.contrib.auth.decorators import login_required
-from .models import User
+from .models import Avatar
+from django.contrib.auth.models import User
+from mascotasapp import views
+from django.core.mail import send_mail
+from django.urls import reverse_lazy
+from django.views import generic
 
 @login_required
 def home(request):
+
     return render(request, "home/home.html")
 
 def aboutus(request):
@@ -36,6 +43,12 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, "home/registration/login.html", {'form': form})
 
+@login_required
+def miPerfil(request):
+
+    avatares = Avatar.objects.filter(user=request.user.id)
+
+    return render(request, 'home/mi_perfil.html', {"url":avatares[0].imagen.url})
 
 def register(request):
 
@@ -53,6 +66,7 @@ def register(request):
 
     return render(request, "home/registration/registro.html", {"form": form})
 
+@login_required
 def editarPerfil(request):
     usuario = request.user
 
@@ -63,16 +77,62 @@ def editarPerfil(request):
             informacion = miFormulario.cleaned_data
 
             usuario.email = informacion['email']
-            usuario.password1 = informacion['password1']
-            usuario.password2 = informacion['password2']
+            usuario.first_name = informacion['first_name']
+            usuario.last_name = informacion['last_name']
             usuario.save()
 
-            return render(request, "home/home.html")
+            return render(request, "home/mi_perfil.html")
 
     else:
         miFormulario = UserEditForm(initial={'email':usuario.email})
     
     return render(request, 'home/registration/editarperfil.html', {'miFormulario': miFormulario, 'usuario': usuario})
 
+@login_required
+def agregarAvatar(request):
+    if request.method == "POST":
+
+        miFormulario = AvatarFormulario(request.POST, request.FILES)
+
+        if miFormulario.is_valid():
+
+            u = User.objects.get(username=request.user)
+
+            avatar = Avatar (user=u, imagen=miFormulario.cleaned_data['imagen'])
+
+            avatar.save()
+
+            return render (request, "home/home.html")
+
+    else:
+
+        miFormulario=AvatarFormulario()
+
+    return render (request, "home/agregar_avatar.html", {'miFormulario': miFormulario})
+
+
+
+def contacto(request):
+    if request.method == "POST":
+
+        miFormulario = FormularioContacto(request.POST)
+
+        if miFormulario.is_valid():
+
+            infForm=miFormulario.cleaned_data
+
+            send_mail(infForm['asunto'], infForm['mensaje'], infForm.get('email', ''), ['paulaortizmenne@gmail.com'],)
+
+            return render(request, "home/contacto_ok.html")
+
+    else:
+
+        miFormulario = FormularioContacto()
+
+    return render (request, "home/formulario_contacto.html", {"miFormulario" : miFormulario})
+
+def contacto_enviado(request):
+    return render(request, "home/contacto_ok.html")
+
 def password_change_done(request):
-    return render(request, "home/registration/password_reset_done.html")#2
+    return render(request, "home/registration/password_reset_done.html")

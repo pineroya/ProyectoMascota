@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from .models import Perros, Gatos, Conejos
+from .models import mascotaApp
 from django.template import loader
 from django.http import HttpResponse
-from mascotasapp.forms import Formularioform
+from mascotasapp.forms import FormularioMascota
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -14,10 +14,9 @@ def nuestras_mascotas(request):
 @login_required
 def listado_animales(request):
 
-    perros=Perros.objects.all()
-    gatos=Gatos.objects.all()
-    conejos=Conejos.objects.all()
-    return render(request, "mascotas/listado_mascotas.html", {"perro":perros, "gato": gatos, "conejo": conejos})
+    mascotalis = mascotaApp.objects.all()
+
+    return render(request, "mascotas/listado_mascotas.html", {"mascotalis":mascotalis})
 
 @login_required
 def busqueda_mascota(request):
@@ -30,10 +29,8 @@ def resultado_busqueda(request):
     if request.GET["bmascota"]:
 
         busquedapet = request.GET["bmascota"]
-        petperro = Perros.objects.filter(nombre__icontains=busquedapet)
-        petgato = Gatos.objects.filter(nombre__icontains=busquedapet)
-        petconejo = Conejos.objects.filter(nombre__icontains=busquedapet)
-        return render(request, "mascotas/resultado_busqueda.html", {"petperro": petperro, "query": busquedapet, "petgato": petgato, "query": busquedapet, "petconejo": petconejo, "query": busquedapet})
+        mascota = mascotaApp.objects.filter(nombre__icontains=busquedapet)
+        return render(request, "mascotas/resultado_busqueda.html", {"mascota": mascota, "query": busquedapet})
 
     else:
 
@@ -46,17 +43,19 @@ def formulario(request):
 
     if request.method=="POST":
 
-        miformulario = Formularioform(request.POST)
+        miformulario = FormularioMascota(request.POST)
         print(miformulario)
 
         if miformulario.is_valid():
 
             informacion = miformulario.cleaned_data
-            perrof = Perros(nombre=informacion['nombre'], edad=informacion['edad'], duenio=informacion['duenio'], color=informacion['color'])
-            perrof.save()
-            return render(request, "mascotas/listado_mascotas.html")
+            mascotaf = mascotaApp(nombre=informacion['nombre'],
+            edad=informacion['edad'], duenio=informacion['duenio'], color=informacion['color'], tipo=informacion['tipo'])
+            mascotaf.save()
+
+            return render(request, "mascotas/nuestras_mascotas.html")
     
     else:
-        miformulario = Formularioform()
+        miformulario = FormularioMascota()
 
     return render(request, "mascotas/formulario.html", {"miformulario": miformulario})

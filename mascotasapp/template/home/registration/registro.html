@@ -5,15 +5,17 @@
 
 <body>
     <div class="container">
+
         <form action="" method="POST">
 
             {% csrf_token %}
     
-            {{form.as_p}}
+            {{form.as_table}}
+            {{ miFormulario.as_table }}
             
             <button type="submit">Registrate aquí</button>
-    
         </form>
+
     </div>
 
 </body>

@@ -19,31 +19,12 @@
 <div class="cta-inner">
     <ul>
 
-        {% for dog in perro %}
-            <p style="color:brown">Nombre del Perro: {{dog.nombre}}</p>
-            <li style="color: whitesmoke">Edad: {{dog.edad}} año/s</li>
-            <li style="color: whitesmoke">Dueño: {{dog.duenio}}</li>
-            <li style="color: whitesmoke">Color: {{dog.color}}</li>
-            <br>
-        {% endfor %}
-    </ul>
-    
-     <ul>
-        {% for cat in gato %}
-            <p style="color: orangered">Nombre del Gato: {{cat.nombre}}</p>
-            <li style="color: whitesmoke">Edad: {{cat.edad}} año/s</li>
-            <li style="color: whitesmoke">Dueño: {{cat.duenio}}</li>
-            <li style="color: whitesmoke">Color: {{cat.color}}</li>
-            <br>
-        {% endfor %}
-    </ul> 
-    
-    <ul>
-        {% for bunny in conejo %}
-            <p style="color:purple">Nombre del Conejo: {{bunny.nombre}}</p>
-            <li style="color: whitesmoke">Edad: {{bunny.edad}} año/s</li>
-            <li style="color: whitesmoke">Dueño: {{bunny.duenio}}</li>
-            <li style="color: whitesmoke">Color: {{bunny.color}}</li>
+        {% for m in mascotalis %}
+            <p style="color:brown">Nombre de la Mascota: {{m.nombre}}</p>
+            <li style="color: whitesmoke">Edad: {{m.edad}} año/s</li>
+            <li style="color: whitesmoke">Dueño: {{m.duenio}}</li>
+            <li style="color: whitesmoke">Color: {{m.color}}</li>
+            <li style="color: whitesmoke">tipo: {{m.tipo}}</li>
             <br>
         {% endfor %}
     </ul>

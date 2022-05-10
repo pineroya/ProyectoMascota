@@ -3,22 +3,32 @@
 
 {% block content %}
 <body>
+{% if user.is_authenticated %}   
     <h3 style="color: whitesmoke">
         Registra tu blog a continuación:
     </h3>
 
-    {% if formulariob.errors %}
-    <p style="color:red">Datos incorrectos, revisar</p>
-    {% endif %}
-
-    <div class="container">
-        <form role = "form" enctype="multipart/form-data" action="" method="POST" id="upload-image-form">
+    <div class="form-group">
+        <table>
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <table>
-                {{ formulariob.as_table }}
-            </table>
-            <input type="submit", value="Enviar">
+            {{ formulariob.media }}
+            {{ formulariob.as_table}}
+            <button class="btn btn-secondary">Post
+            </button>
         </form>
+        </table>
     </div>
+
+    <script>
+        var name = "{{ user.id }}";
+
+        document.getElementById("elder").value= name;
+
+    </script>
+
+{% else %}
+
 </body>
+{% endif %}
 {% endblock %}

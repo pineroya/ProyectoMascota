@@ -23,8 +23,7 @@ def formularioblog(request):
             if formulariob.is_valid():
 
                 informacionblog = formulariob.cleaned_data
-                formblog = Post(titulo=informacionblog['titulo'], subtitulo=informacionblog['subtitulo'],
-                contenido=informacionblog['contenido'], imagen=informacionblog['imagen'],autor=informacionblog['autor'])
+                formblog = Post(titulo=informacionblog['titulo'], subtitulo=informacionblog['subtitulo'], contenido=informacionblog['contenido'], imagen=informacionblog['imagen'], autor=informacionblog['autor'])
                 formblog.save()
                 return render(request, "blog/formblog.html")
         
@@ -69,4 +68,3 @@ def editarblog(request, titulo_blog):
         formulariob = FormularioBlog(initial={'titulo': eblog.titulo, 'subtitulo': eblog.subtitulo, 'contenido': eblog.contenido, 'imagen': eblog.imagen})
     
     return render(request, 'blog/editarblog.html', {'formulariob': formulariob, 'titulo_blog': titulo_blog})
-    

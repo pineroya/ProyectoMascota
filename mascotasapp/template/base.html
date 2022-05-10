@@ -24,8 +24,12 @@
     </h1>
 
     <ul class="sidebar-nav">
-     {% if user.is_authenticated %}
-       <li>User: {{ user.get_username }}</li>
+     {% if request.user.is_authenticated %}
+       <li>Bienvenido: {{ user.get_username }}
+        <button>
+          <a href="/accounts/mi_perfil"> Perfil</a>
+        </button>
+       </li>
        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
      {% else %}
        <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
@@ -50,6 +54,10 @@
           <li class="nav-item {% if request.path == '/nuestras_mascotas' %}active{% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Nuestras_mascotas' %}">Nuestras mascotas</a>
           </li>
+          </li>
+          <li class="nav-item {% if request.path == '/contacto' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'Formulario_Contacto' %}">Contacto</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -60,7 +68,6 @@
 {% block content %}
 
 {% endblock %}
-
     <!-- Footer -->
     <footer class="footer text-faded text-center py-5">
       <div class="container">

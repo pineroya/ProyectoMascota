@@ -18,6 +18,7 @@
         <form action="" method="POST">{% csrf_token %}
             <table>
                 {{ formulariob.as_table }}
+                {{ formulariob.media }}
             </table>
             <input type="submit", value="Enviar">
         </form>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} <title>Formulario Contacto</title> {% endblock %}
+
+{% block content %}
+<body>
+    <h3 style="color: whitesmoke">
+        Contáctanos:
+    </h3>
+
+    {% if form.errors %}
+    <p style="color:red">Por favor revisar éste campo</p>
+    {% endif %}
+
+    <div class="container">
+        <form action="" method="POST">{% csrf_token %}
+            <table>
+                {{ miFormulario.as_table }}
+            </table>
+            <input type="submit", value="Enviar">
+        </form>
+    </div>
+</body>
+{% endblock %}

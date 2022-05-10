@@ -3,20 +3,20 @@
 
 {% block content %}
 <body>
-    <h3>
+    <h3 style="text-align: left; color: whitesmoke">
         Registra tu mascota a continuación:
     </h3>
 
     <div class="container">
-        <li class="nav-item {% if request.path == '/formulario' %}active{% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'Formulario' %}">Registra tu mascota</a>
-          </li>
-          <li class="nav-item {% if request.path == '/buscar' %}active{% endif %} px-lg-4">
+          <p>
+              <a class="nav-link text-uppercase text-expanded" href="{% url 'Formulario' %}">Registra tu mascota</a>
+          </p>
+          <p>
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Busqueda' %}">Busqueda</a>
-          </li>
-          <li class="nav-item {% if request.path == '/lista' %}active{% endif %} px-lg-4">
+          </p>
+          <p>
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Lista' %}">Lista de mascotas</a>
-          </li>
+          </p>
     </div>
 </body>
 {% endblock %}
