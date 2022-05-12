@@ -4,6 +4,10 @@
 {% load static %}
 
 {% block content %}
+<button class="btn btn-secondary">
+  <a  href="formulario_blog/">Agregar otro Post</a>
+</button>
+
     {% for post in posts %}
 
     <section class="page-section clearfix">
@@ -19,10 +23,10 @@
               <div style="text-align: left; color: whitesmoke; font-size: 0.8em;">
                 <p>Autor: {{post.autor}}</p>
                 <p>Creado: {{post.created}}</p>
-                  <button>
-                    <a href="{% url 'Delete_blog' post.titulo %}"> Eliminar</a>
+                  <button class="btn btn-secondary">
+                    <a href="{% url 'Borrar_blog' post.titulo %}"> Eliminar</a>
                   </button>
-                  <button>
+                  <button class="btn btn-secondary">
                     <a href="{% url 'Editar_blog' post.titulo %}"> Editar</a>
                   </button>
               </div>
@@ -32,7 +36,5 @@
       </section>
     
     {% endfor %}
-      <button>
-      <a style="color:rgb(0, 0, 0)"; href="formularioblog/">Agregar otro Post</a>
-      </button>
+
 {% endblock %}

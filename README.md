@@ -14,7 +14,7 @@ Para buscar una mascota ya agregada ingresar a la ruta busqueda/
 Para ver el listado completo de los datos cargados de todas las clases de models ingresar a lista/
 
 Para ver las mascotas cargadas en Post la ruta es localhost
-Para ver registrar un Post la ruta es formularioblog/
+Para ver registrar un Post la ruta es formulario_blog/
 
 Para enviar un mensaje de contacto la ruta es contacto/
 

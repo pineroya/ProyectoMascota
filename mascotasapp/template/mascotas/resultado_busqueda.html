@@ -4,66 +4,33 @@
 {% block content %}
 
 <body>
-    <p>
-        Estás buscando: <strong>{{query}}</strong>
-    </p>
-    {% if petconejo %}
-        <p>Mascota encontrada: {{petconejo|length}} conejo</p>
-        <ul>
-            {% for pet in petconejo %}
-                <li>
-                    Nombre: {{pet.nombre}}
-                </li>
-                <li>
-                    Edad: {{pet.edad}} año/s
-                </li>
-                <li>
-                    Dueño: {{pet.duenio}}
-                </li>
-                <li>
-                    Color: {{pet.color}}
-                </li>
-            {% endfor %}
-        </ul>
-    {% elif petperro %}
-        <p>Mascota encontrada: {{petperro|length}} perro</p>
-        <ul>
-            {% for pet in petperro %}
-                <li>
-                    Nombre: {{pet.nombre}}
-                </li>
-                <li>
-                    Edad: {{pet.edad}} año/s
-                </li>
-                <li>
-                    Dueño: {{pet.duenio}}
-                </li>
-                <li>
-                    Color: {{pet.color}}
-                </li>
-            {% endfor %}
-        </ul>
-    {% elif petgato %}
-        <p>Mascota encontrada: {{petgato|length}} gato</p>
-        <ul>
-            {% for pet in petgato %}
-                <li>
-                    Nombre: {{pet.nombre}}
-                </li>
-                <li>
-                    Edad: {{pet.edad}} año/s
-                </li>
-                <li>
-                    Dueño: {{pet.duenio}}
-                </li>
-                <li>
-                    Color: {{pet.color}}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No se encuentra la mascota</p>
-    {% endif %}
+    <div class="contenedorFormulario">
+        <p>
+            Estás buscando: <strong>{{query}}</strong>
+        </p>
+
+        {% if mascota %}
+            <p>Mascota encontrada: {{mascota|length}}</p>
+            <ul>
+                {% for mas in mascota %}
+                    <li>
+                        Nombre: {{mas.nombre}}
+                    </li>
+                    <li>
+                        Edad: {{mas.edad}} año/s
+                    </li>
+                    <li>
+                        Dueño: {{mas.duenio}}
+                    </li>
+                    <li>
+                        Color: {{mas.color}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encuentra la mascota</p>
+        {% endif %}
+    </div>
 </body>
 
 {% endblock %}

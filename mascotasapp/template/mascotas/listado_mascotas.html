@@ -1,22 +1,12 @@
 {% extends "base.html" %}
 {% block title %}<title>Lista</title>{% endblock %}
 
-<style>
-    .city {
-      background-color: tomato;
-      color: white;
-      border: 2px solid black;
-      margin: 20px;
-      padding: 20px;
-    }
-</style>
-
 {% block content %}
 
 <h3 style="color: whitesmoke">
     Lista completa de mascotas
 </h3>
-<div class="cta-inner">
+<div class="city">
     <ul>
 
         {% for m in mascotalis %}

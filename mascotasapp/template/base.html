@@ -25,12 +25,14 @@
 
     <ul class="sidebar-nav">
      {% if request.user.is_authenticated %}
-       <li style="color: whitesmoke;">Bienvenido: {{ user.get_username }}
-        <button>
-          <a href="/accounts/mi_perfil"> Perfil</a>
+
+        <img height="80px" src="{{url}}">
+        <li style="color: whitesmoke;">Bienvenido: {{ user.get_username }}
+        <button class="btn btn-secondary">
+          <a href="/cuentas/mi_perfil"> Perfil</a>
         </button>
-       </li>
-       <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+        </li>
+        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
      {% else %}
        <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
      {% endif %} 
@@ -72,7 +74,7 @@
     <footer class="footer text-faded text-center py-5">
       <div class="container">
         <p>
-        <a href='/aboutus' class="link">About us</a>
+        <a href='/acerca_de_nosotros' class="link">Acerca de nosotros</a>
         </p>
         <p>Gracias por tu visita</p>
         <p class="m-0 mbt1">&copy; Nuestras mascotas 2022</p>

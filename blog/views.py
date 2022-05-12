@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from ProyectoMascotas import settings
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from mascotasapp.forms import FormularioBlog
+from mascotasapp.forms import Formulario_blog
+from home.models import Avatar
 
 # Create your views here.
 
@@ -13,12 +14,14 @@ from mascotasapp.forms import FormularioBlog
 def blog(request):
 
     posts=Post.objects.all()
-    return render(request, "blog/blog.html", {"posts": posts})
+    avatares = Avatar.objects.filter(user=request.user.id)
 
-def formularioblog(request):
+    return render(request, "blog/blog.html", {"posts": posts, "url":avatares[0].imagen.url})
+
+def formulario_blog(request):
         if request.method=="POST":
 
-            formulariob = FormularioBlog(request.POST, request.FILES)
+            formulariob = Formulario_blog(request.POST, request.FILES)
 
             if formulariob.is_valid():
 
@@ -28,30 +31,28 @@ def formularioblog(request):
                 return render(request, "blog/formblog.html")
         
         else:
-            formulariob = FormularioBlog()
+            formulariob = Formulario_blog()
 
         return render(request, "blog/formblog.html", {"formulariob": formulariob})
 
-def deletepost(request, titulo_blog):
+def borrar_blog(request, titulo_blog):
 
-    dblog = Post.objects.get(titulo = titulo_blog)
-    dblog.delete()
+    bblog = Post.objects.get(titulo = titulo_blog)
+    bblog.delete()
 
-    dblogs = Post.objects.all()
+    bblogs = Post.objects.all()
 
-    contexto = {"dblogs": dblogs}
+    contexto = {"bblogs": bblogs}
 
     return render(request, "blog/blog.html", contexto)
 
-def editarblog(request, titulo_blog):
+def editar_blog(request, titulo_blog):
 
     eblog = Post.objects.get(titulo = titulo_blog)
 
     if request.method == 'POST':
 
-        formulariob = FormularioBlog(request.POST, request.FILES)
-
-        print(formulariob)
+        formulariob = Formulario_blog(request.POST, request.FILES)
 
         if formulariob.is_valid():
 
@@ -65,6 +66,6 @@ def editarblog(request, titulo_blog):
 
             return render(request, "blog/blog.html")
     else:
-        formulariob = FormularioBlog(initial={'titulo': eblog.titulo, 'subtitulo': eblog.subtitulo, 'contenido': eblog.contenido, 'imagen': eblog.imagen})
+        formulariob = Formulario_blog(initial={'titulo': eblog.titulo, 'subtitulo': eblog.subtitulo, 'contenido': eblog.contenido, 'imagen': eblog.imagen})
     
     return render(request, 'blog/editarblog.html', {'formulariob': formulariob, 'titulo_blog': titulo_blog})

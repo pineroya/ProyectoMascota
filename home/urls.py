@@ -8,16 +8,17 @@ from django.conf.urls.static import static
 app_name = ""
 urlpatterns = [
     path('home/', views.home, name="Home"),
-    path('aboutus/', views.aboutus, name="Aboutus"),
-    path('accounts/register/', views.register, name = "Register"),
+    path('acerca_de_nosotros/', views.aboutus, name="Acerca_de_nosotros"),
+    path('cuentas/register/', views.register, name = "Register"),
     path('accounts/logout/', LogoutView.as_view(template_name='home/registration/logout.html'), name='Logout'),
-    path('accounts/login/', views.login_request, name="login"),
-    path('accounts/editar_perfil/', views.editarPerfil, name = 'Editar_perfil'),
-    path('accounts/agregar_avatar/', views.agregarAvatar, name= "Agregar_avatar"),
-    path('accounts/password_change/done/', views.password_change_done, name = 'password_done'),
-    path('accounts/mi_perfil/', views.miPerfil, name="Mi_Perfil"),
-    path('contacto/', views.contacto, name = "Formulario_Contacto"),
+    path('cuentas/login/', views.login_request, name="login"),
+    path('cuentas/editar_perfil/', views.editarPerfil, name = 'Editar_perfil'),
+    path('cuentas/agregar_avatar/', views.agregarAvatar, name= "Agregar_avatar"),
+    path('cuentas/password_change/done/', views.password_change_done, name = 'password_done'),
+    path('cuentas/mi_perfil/', views.miPerfil, name="Mi_Perfil"),
+    path('cuentas/', views.contacto, name = "Formulario_Contacto"),
     path('contactook/', views.contacto_enviado, name = "Contacto_Enviado"),
+    path('cuentas/edit_profile/', views.editarBioyWeb, name="Edit_profile"),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

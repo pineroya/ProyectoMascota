@@ -6,16 +6,18 @@
 {% if request.user.is_authenticated %}
     <div class="linksCategorias">
         <img height="80px" src="{{url}}">
-        <li>{{ user.get_username }}</li>
-        <li>{{ user.email }}</li>
-        <li>{{ user.first_name }}</li>
-        <li>{{ user.last_name }}</li>
+        <li>Usuario: {{ user.get_username }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Nombre y Apellido: {{ user.first_name }} {{ user.last_name }}</li>
+        <li>Tu Bio: {{ user.profile.bio }}</li>
+        <li>Tu Website: {{ user.profile.website_url }}</li>
     </div>
 {% endif %}
+
 <p>
-    <a href='/accounts/editar_perfil' class="link">Edita tu perfil</a>
+    <a href='/cuentas/editar_perfil' class="link">Edita tu Usuario</a>
 </p>
 <p>
-    <a href="/accounts/agregar_avatar" class="link">Agregar Avatar</a>
+    <a href='/cuentas/edit_profile' class="link">Edita tu Profile</a>
 </p>
 {% endblock %}

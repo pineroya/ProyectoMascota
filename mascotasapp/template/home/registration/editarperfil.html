@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}<title>Editar</title>{% endblock %}
+{% block title %}<title>Editar User</title>{% endblock %}
 
 {% block content %}
-<h1>Formulario - Editar perfil</h1>
-<h1>de {{usuario}}</h1>
+<h1 style="color: whitesmoke">Formulario - Editar Usuario</h1>
+<h1 style="color: whitesmoke">de {{user.get_username}}</h1>
 
 <body>
     <div class="container">
@@ -13,8 +13,8 @@
 
                 {{miFormulario.as_table}}
 
-            </table>>
-            <input type="submit", value="Enviar">
+            </table>
+            <input class="btn btn-secondary" type="submit", value="Enviar">
         </form>
        
     </div>

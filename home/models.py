@@ -15,11 +15,5 @@ class Avatar(models.Model):
 class Profile(models.Model):
     user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.TextField()
-    webiste_url=models.CharField(max_length=255,default='')
+    website_url=models.CharField(max_length=255,default='')
 
-
-    def _str_(self):
-        return str(self.user)
-
-    def get_absolute_url(self):
-        return reverse('Home')

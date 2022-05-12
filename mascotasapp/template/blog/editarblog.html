@@ -15,15 +15,16 @@
     {% endif %}
 
     <div class="container">
-        <form action="" method="POST">{% csrf_token %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <table>
                 {{ formulariob.as_table }}
                 {{ formulariob.media }}
             </table>
-            <input type="submit", value="Enviar">
+            <input class="btn btn-secondary" type="submit", value="Enviar">
         </form>
     </div>
 </body>
 
-<a href="formularioblog/">Agregar otro Post</a>
+
 {% endblock %}
