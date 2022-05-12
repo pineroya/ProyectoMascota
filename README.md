@@ -29,4 +29,4 @@ Pudimos crear el modelo Profile para agregar bio y website_url a User. Nos deja 
 
 Creamos modelo Avatar para darle una imagen a User, podemos agregarla mediante form, pero luego cuando la actualizamos con un form, Django sigue tomando la primera imagen y no la actualiza. Además no logramos que Avatar se visualizara en todas las views.
 
-Intentamos resolver ambos inconvenientes siguiendo los pasos de los pdf de las clases, pero no lo hemos logrado, ya que los mismos presentan bastantes errores y hasta se encuentran incompletos.
+Intentamos resolver ambos inconvenientes siguiendo los pasos de los PDF de las clases, pero no lo hemos logrado, ya que los mismos presentan bastantes errores y hasta se encuentran incompletos.
